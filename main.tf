@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "main" {
   name     = "production-rg"
-  location = "southcentralus"
+  location = "westus3"
 }
 #  Tells Terraform to use local module
 module "network" {
@@ -8,7 +8,7 @@ module "network" {
 
   # 
   resource_group_name   = azurerm_resource_group.main.name
-  location              = "southcentralus"
+  location              = "westus3"
   vnet_name             = "enterprise-vnet"
   address_space         = ["10.0.0.0/16"]
   public_subnet_prefix  = ["10.0.1.0/24"]
@@ -20,7 +20,7 @@ module "compute" {
 
   # Standard Variables
   resource_group_name = azurerm_resource_group.main.name
-  location            = "southcentralus"
+  location            = "westus3"
   
   # VM Specific Variables
   vm_size        = "Standard_B1s"
